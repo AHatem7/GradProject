@@ -20,7 +20,7 @@ int currentindex =0;
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
-      Background('assets/images/bk.jpg'),
+      Background('assets/images/bac.png'),
       Scaffold(resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
         bottomNavigationBar: Theme(data: Theme.of(context).copyWith(

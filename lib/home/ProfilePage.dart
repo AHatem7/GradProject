@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled2/CardDesign.dart';
 import 'package:untitled2/dataprofile.dart';
+import 'package:untitled2/home/profilepage_edit.dart';
+import 'package:untitled2/main.dart';
 
 class ProfilePage extends StatelessWidget {
-
+static const String routename ='profile page';
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,9 @@ class ProfilePage extends StatelessWidget {
       children: [Spacer(),
         Expanded(
         child: Row(mainAxisAlignment: MainAxisAlignment.end,
-          children: [IconButton(onPressed: (){},
+          children: [IconButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> Profile_Edit()));
+          },
               icon: Icon(Icons.edit,size: 35)),
             Padding(
                 padding: EdgeInsets.only(right: 25),)
@@ -99,7 +103,10 @@ class ProfilePage extends StatelessWidget {
           child: Row(mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              TextButton(onPressed: (){}, child: Text('Logout',
+              TextButton(onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginPage()));
+
+              }, child: Text('Logout',
                 style: TextStyle(
                     color: Colors.red,fontSize: 25,
                     fontWeight: FontWeight.bold),)),

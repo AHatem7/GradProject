@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled2/Departments.dart';
 
 class CardDesign extends StatelessWidget {
   double height;
@@ -8,7 +9,8 @@ double radius;
 String cardimage;
 String departmentname;
 
-CardDesign( { this.height=150,  this.width=300,  this.radius=50, this.cardimage='', this.departmentname=''});
+
+CardDesign( { this.height=1,  this.width=1,  this.radius=1, this.cardimage='', this.departmentname='',});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +21,8 @@ CardDesign( { this.height=150,  this.width=300,  this.radius=50, this.cardimage=
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius)),
             child: InkWell(
               onTap: () {
+
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> Departments()));
              },
               child: Container(
                 width:width,
