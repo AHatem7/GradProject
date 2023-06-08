@@ -133,8 +133,11 @@ class ADDUser extends StatelessWidget {
                       ),
                     ),
 
+
                     SizedBox( height: 55,width: 350,
-                      child: TextFormField(
+                      child:
+
+                      TextFormField(
                         controller: authService.role,
                         decoration: InputDecoration( filled: true, fillColor: Colors.white,
                             border: OutlineInputBorder(

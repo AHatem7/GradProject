@@ -11,10 +11,9 @@ class DropDownButton extends StatefulWidget {
 class _DropDownButtonState extends State<DropDownButton> {
 
   final List<String> items = [
-    'Item1',
-    'Item2',
-    'Item3',
-    'Item4',
+    'user',
+    'admin',
+
   ];
   String? selectedValue;
 
@@ -64,10 +63,12 @@ class _DropDownButtonState extends State<DropDownButton> {
 
   @override
   Widget build(BuildContext context) {
-    return  Center(
+    return
+      Center(
       child: Container(padding: const EdgeInsets.symmetric(horizontal: 100),
         child: DropdownButtonHideUnderline(
           child: DropdownButtonFormField(
+
             decoration: InputDecoration(
               border: OutlineInputBorder(
                   borderRadius:BorderRadius.circular(30),

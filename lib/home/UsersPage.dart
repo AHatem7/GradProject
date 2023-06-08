@@ -1,7 +1,11 @@
 
 
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:untitled2/AddNewUser.dart';
 import 'package:untitled2/Add_user.dart';
 import 'package:untitled2/textfeild.dart';
@@ -57,51 +61,162 @@ class UsersPage extends StatelessWidget {
                                 children: [
                                   Stack(alignment: AlignmentDirectional.center,
                                       children: [
-                                        Card(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                                          child: Container(
-                                            height: 180,
-                                            width: 325,
 
-                                            child: Column(crossAxisAlignment: CrossAxisAlignment.start
-                                              ,mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    SizedBox(width: 18,),
-                                                    Text('Name:',style:TextStyle(color: Color.fromRGBO(206,185, 151, 1),fontSize: 15,fontWeight: FontWeight.bold) ),
-                                                    SizedBox(width: 18,),
-                                                    Text(data['firstname'],style:  TextStyle(fontSize: 14)),
-                                                    SizedBox(width: 18,),
-                                                    Text(data['lastname'],style: TextStyle(fontSize: 14)),
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    SizedBox(width: 18,),
-                                                    Text('Email:',style: TextStyle(color: Color.fromRGBO(206,185, 151, 1),fontSize: 15,fontWeight: FontWeight.bold)),
-                                                    SizedBox(width: 18,),
-                                                    Text(data['email'],style:TextStyle(fontSize: 13)),
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    SizedBox(width: 18,),
-                                                    Text('Phone:',style: TextStyle(color: Color.fromRGBO(206,185, 151, 1),fontSize: 15,fontWeight: FontWeight.bold)),
-                                                    SizedBox(width: 18,),
-                                                    Text(data['phone'],style: TextStyle(fontSize: 14)),
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    SizedBox(width: 18,),
-                                                    Text('Department:',style: TextStyle(color: Color.fromRGBO(206,185, 151, 1),fontSize: 15,fontWeight: FontWeight.bold)),
-                                                    SizedBox(width: 18,),
-                                                    Text(data['department'],style: TextStyle(fontSize: 14)),
-                                                  ],
-                                                ),
+                                        Center(
+                                          child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Slidable(
+                                                startActionPane: ActionPane(motion: DrawerMotion(),
+                                                    children: [
+                                                      SlidableAction(onPressed: (buildContext)async{
+                                                        DocumentReference userDocRef = FirebaseFirestore.
+                                                        instance.collection('user').doc(data.id);
 
-                                              ],
-                                            ),
+
+
+
+                                                        try{
+
+                                                         // await userDocRef.delete();
+                                                          showDialog(
+                                                            context: context,
+                                                            builder: (BuildContext context) {
+                                                              return AlertDialog(
+                                                                title: Text(""),
+                                                                content: Text("  Are you sure you want delete this user ?"),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    child: Text("no"),
+                                                                    onPressed: () {
+                                                                      Navigator.of(context).pop();
+                                                                    },
+                                                                  ),
+                                                                  TextButton(
+                                                                    child: Text("yes"),
+                                                                    onPressed: () {
+                                                                       userDocRef.delete();
+                                                                       Navigator.of(context).pop();
+                                                                       showDialog(
+                                                                         context: context,
+                                                                         builder: (BuildContext context) {
+                                                                           return AlertDialog(
+                                                                             title: Text(""),
+                                                                             content: Text("  Deleted successfully "),
+                                                                             actions: [
+                                                                               TextButton(
+                                                                                 child: Text("close"),
+                                                                                 onPressed: () {
+                                                                                   Navigator.of(context).pop();
+                                                                                 },
+                                                                               ),
+
+                                                                             ],
+                                                                           );
+                                                                         },
+                                                                       );
+
+
+
+                                                                    },
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
+
+
+                                                          // User? user = FirebaseAuth.instance.currentUser;
+                                                          // if (user != null) {
+                                                          //   await user.delete();
+                                                          // }
+
+
+
+
+                                                        }catch (e) {
+                                                          // Show an error message to the user
+                                                          ScaffoldMessenger.of(context).showSnackBar(
+                                                            SnackBar(content: Text('Error deleting user: $e')),
+                                                          );
+                                                        }
+
+
+                                                        // // Get the current user
+                                                        // User? user = FirebaseAuth.instance.currentUser;
+                                                        // if (user != null) {
+                                                        //   try {
+                                                        //     // Delete the user
+                                                        //     await user.delete();
+                                                        //
+                                                        //     // Show a message to the user
+                                                        //     ScaffoldMessenger.of(context).showSnackBar(
+                                                        //       SnackBar(content: Text('User deleted successfully')),
+                                                        //     );
+                                                        //   } catch (e) {
+                                                        //     // Show an error message to the user
+                                                        //     ScaffoldMessenger.of(context).showSnackBar(
+                                                        //       SnackBar(content: Text('Error deleting user: $e')),
+                                                        //     );
+                                                        //   }
+                                                        // }
+                                                      },
+                                                        backgroundColor: Colors.red,
+                                                        icon: Icons.delete_outline,
+                                                        label: 'Delete',
+
+                                                      )
+                                                    ]),
+
+                                                child: Card(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                                                  child: Container(
+                                                    height: 180,
+                                                    width: 325,
+
+                                                    child: Column(crossAxisAlignment: CrossAxisAlignment.start
+                                                      ,mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                      children: [
+                                                        Row(
+                                                          children: [
+                                                            SizedBox(width: 18,),
+                                                            Text('Name:',style:TextStyle(color: Color.fromRGBO(206,185, 151, 1),fontSize: 15,fontWeight: FontWeight.bold) ),
+                                                            SizedBox(width: 18,),
+                                                            Text(data['firstname'],style:  TextStyle(fontSize: 14)),
+                                                            SizedBox(width: 18,),
+                                                            Text(data['lastname'],style: TextStyle(fontSize: 14)),
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            SizedBox(width: 18,),
+                                                            Text('Email:',style: TextStyle(color: Color.fromRGBO(206,185, 151, 1),fontSize: 15,fontWeight: FontWeight.bold)),
+                                                            SizedBox(width: 18,),
+                                                            Text(data['email'],style:TextStyle(fontSize: 13)),
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            SizedBox(width: 18,),
+                                                            Text('Phone:',style: TextStyle(color: Color.fromRGBO(206,185, 151, 1),fontSize: 15,fontWeight: FontWeight.bold)),
+                                                            SizedBox(width: 18,),
+                                                            Text(data['phone'],style: TextStyle(fontSize: 14)),
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            SizedBox(width: 18,),
+                                                            Text('Department:',style: TextStyle(color: Color.fromRGBO(206,185, 151, 1),fontSize: 15,fontWeight: FontWeight.bold)),
+                                                            SizedBox(width: 18,),
+                                                            Text(data['department'],style: TextStyle(fontSize: 14)),
+                                                          ],
+                                                        ),
+
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         )
                                       ] ),

@@ -53,6 +53,10 @@ dependencies:
   flutter_cached_pdfview: ^0.4.1
   encrypt: ^5.0.1
   syncfusion_flutter_pdfviewer: ^20.4.54
+  flutter_slidable: ^3.0.0
+  liquid_swipe: ^3.1.0
+  selectable_list: ^0.1.1
+
   #aes_crypt: ^0.1.1
   #flutter_plugin_pdf_viewer: ^1.0.0
 

@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       routes: {
       //LoginPage.routename:(context) => LoginPage(),
         DirectoryPage.routename:(context) => const DirectoryPage(),
-        Profile_Edit.routename:(context) => const Profile_Edit(),
+        //Profile_Edit.routename:(context) => const Profile_Edit(),
         ProfilePage.routename :(context) => ProfilePage(),
         ViewUser.routename: (context) => const ViewUser(),
         EditViewUser.routename: (context) => const EditViewUser(),
@@ -74,6 +74,7 @@ class MyApp extends StatelessWidget {
         ProfilePageUser1.routename:(context) => ProfilePageUser1(),
         chatpage.routename:(context) => chatpage(email: '',),
         chatpageuser.routename:(context) => chatpageuser(email: '',),
+        ADDUser.routename:(context) => ADDUser(),
 
 
 

@@ -76,6 +76,7 @@ class AuthService{
       }
 
 
+
        if (userSnapshot.docs.length == 1) {
         String role = userSnapshot.docs[0]['role'];
         if (role == 'admin') {
@@ -193,3 +194,4 @@ class AuthService{
         context, MaterialPageRoute(builder: (context) => LoGinPage(), ), (route) => false);
   }
 }
+
