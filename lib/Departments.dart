@@ -9,6 +9,9 @@ import 'drop_bottom.dart';
 import 'package:untitled2/storage_service.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
+import 'encrpt/decryptPage.dart';
+import 'encrpt/test.dart';
+
 
 
 class Departments extends StatefulWidget {
@@ -130,7 +133,8 @@ class _DepartmentsState extends State<Departments> {
                        padding: const EdgeInsets.all(8.0),
                        child: ElevatedButton(
                           onPressed: ()  async {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>viewfile(viewfilename:snapshot.data!.items[index].name)));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                                viewfile(viewfilename:snapshot.data!.items[index].name)));
 
 
 
@@ -140,7 +144,10 @@ class _DepartmentsState extends State<Departments> {
 //   print(url);
 
                           },
-                        child:  Text(snapshot.data!.items[index].name,style: TextStyle(color: Colors.black,fontSize: 10)),style: ElevatedButton.styleFrom(primary: Colors.white),
+                        child:
+                        Text(snapshot.data!.items[index].name,
+                            style: TextStyle(color: Colors.black,fontSize: 10)),
+                         style: ElevatedButton.styleFrom(primary: Colors.white),
 
                          // FutureBuilder(
                          //
@@ -212,7 +219,7 @@ class _DepartmentsState extends State<Departments> {
           children: [
             const Padding(padding: EdgeInsets.symmetric(horizontal: 140,vertical: 55)),
             FloatingActionButton(onPressed: (){
-               Navigator.push(context, MaterialPageRoute(builder: (context)=> UploadFile()));
+               Navigator.push(context, MaterialPageRoute(builder: (context)=> EncryptionPage()));
             },
               child: const Icon(Icons.add,color: Colors.white, size: 45,),
               backgroundColor: const Color.fromRGBO(220, 205, 168, 1),

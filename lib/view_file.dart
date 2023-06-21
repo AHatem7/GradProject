@@ -10,13 +10,14 @@ class viewfile extends StatefulWidget {
 
   static String routename = 'viewfile';
   late String viewfilename;
+  late String f;
   //const viewfile({Key? key}) : super(key: key);
 
   @override
   State<viewfile> createState() => _viewfileState();
 }
 
-class _viewfileState extends State<viewfile> {
+class _viewfileState extends State<viewfile>  {
   @override
   Widget build(BuildContext context) {
     final Storage storage = Storage();
@@ -32,7 +33,8 @@ class _viewfileState extends State<viewfile> {
               builder:
                   (BuildContext context, AsyncSnapshot<String> snapshot) {
                 if (snapshot.connectionState == ConnectionState.done &&
-                    snapshot.hasData && widget.viewfilename.endsWith('.pdf')) {
+                    snapshot.hasData &&
+                    widget.viewfilename.endsWith('.pdf')) {
                   return
                   //   Image.network(snapshot.data!,
                   //     fit: BoxFit.cover,
@@ -40,7 +42,18 @@ class _viewfileState extends State<viewfile> {
                   // );
 
 
-                  SfPdfViewer.network(snapshot.data!);
+                  Stack(children: [ SfPdfViewer.network(snapshot.data!),
+                    Column(mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children:[ ElevatedButton(onPressed: (){
+
+
+                    }, child: Text('')
+                    )
+                    ]
+                    )
+
+                  ],);
                 }
                  else if (snapshot.connectionState == ConnectionState.done &&
                     snapshot.hasData) {
@@ -76,13 +89,20 @@ class _viewfileState extends State<viewfile> {
                                           child: Image.network(snapshot.data!,
                                           fit: BoxFit.cover,
 
+
                     ),
                                         ),
                                       ),
                                     ),
                                   ),
+
                                  ],   ),
                               ),
+
+
+
+
+
                             ],
                           ),],
                       );

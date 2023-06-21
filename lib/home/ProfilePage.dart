@@ -64,6 +64,7 @@ Expanded(
         Expanded(
           child:
           StreamBuilder(
+
               stream: FirebaseFirestore.instance.collection("user").where("uid",isEqualTo: currentUser.currentUser!.uid).snapshots(),
               builder: (context,AsyncSnapshot<QuerySnapshot> snapshot){
 

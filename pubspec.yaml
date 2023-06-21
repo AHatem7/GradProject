@@ -56,6 +56,8 @@ dependencies:
   flutter_slidable: ^3.0.0
   liquid_swipe: ^3.1.0
   selectable_list: ^0.1.1
+  open_file: ^3.2.1
+  aes_crypt_null_safe: ^2.0.2
 
   #aes_crypt: ^0.1.1
   #flutter_plugin_pdf_viewer: ^1.0.0

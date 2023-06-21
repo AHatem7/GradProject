@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:untitled2/Add_user.dart';
 import 'package:untitled2/Departments.dart';
-import 'package:untitled2/choose/choose.dart';
+//import 'package:untitled2/choose/choose.dart';
 import 'package:untitled2/editviewuser.dart';
 import 'package:untitled2/home/BottomNavigationBarItem.dart';
-import 'package:untitled2/backgrounds.dart';
+//import 'package:untitled2/backgrounds.dart';
 import 'package:untitled2/home/ProfilePage.dart';
+import 'package:untitled2/home/chatpage.dart';
 import 'package:untitled2/profilepage_edit.dart';
 import 'package:untitled2/myTheme.dart';
-import 'package:untitled2/registration.dart';
+//import 'package:untitled2/registration.dart';
 import 'package:untitled2/testUploadFileDB.dart';
 import 'package:untitled2/uplode_file.dart';
 import 'package:untitled2/viewPDF.dart';
-import 'package:untitled2/view_file.dart';
+//import 'package:untitled2/view_file.dart';
 import 'package:untitled2/viewuser.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'AddNewUser.dart';
@@ -20,8 +21,14 @@ import 'USER/UserLOginPage.dart';
 import 'USER/chatpageUser.dart';
 import 'USER/homePage.dart';
 import 'USER/profileuser.dart';
+//import 'encrpt/decrept.dart';
+//import 'encrpt/decryptPage.dart';
+import 'encrpt/other.dart';
+import 'encrpt/test.dart';
+import 'encrpt/test2.dart';
+import 'encrpt/test3.dart';
 import 'getdatatest.dart';
-import 'home/chatpage.dart';
+//import 'home/chatpage.dart';
 import 'login/LoGinPage.dart';
 import 'login/loginScreen.dart';
 
@@ -52,13 +59,14 @@ class MyApp extends StatelessWidget {
         AddUser.routeName:(context) => const AddUser(),
         Departments.routename:(context) => const Departments(),
         UploadFile.routename:(context) => UploadFile(),
+        //decryptionPage.routename:(context) => decryptionPage(),
         //AddTaskBottomSheet.routename:(context) => AddTaskBottomSheet(),
-        // Registration.routename:(context) => Registration(),
-        //SignUp.routename:(context) => SignUp(),
+        //EncryptedFilesPage.routeName:(context) => EncryptedFilesPage(),
+        //EncryptedFileList.routename:(context) => EncryptedFileList(),
         //SignUpScreen.routename:(context) => SignUpScreen(),
         //LoginPage1.routename:(context) => LoginPage1(),
-        //Test.routename:(context) => Test(),
-        //register.routename:(context) => register(),
+        EncryptionPage.routeName:(context) => EncryptionPage(),
+        DownloadPage.routeName:(context) => DownloadPage(),
         //Login22.routename:(context) => Login22(),
         testUploadDB.routename:(context) => testUploadDB(),
         //testup.routename:(context) => testup(),
@@ -67,20 +75,21 @@ class MyApp extends StatelessWidget {
         LoGinPage.routename:(context) => LoGinPage(),
         AddUser.routeName:(context) => ADDUser(),
         UserHomePage.routename: (context) => UserHomePage(),
-       // UserLoginPage.routename:(context) => UserLoginPage(),
-       // Choose.routename:(context) => Choose(),
+        EncryptFile.routename:(context) => EncryptFile(),
+        //DecryptionPage.routename:(context) => DecryptionPage(),
         //viewfile.routename:(context) => viewfile(),
         ViewPDF.routename:(context) => ViewPDF(),
         ProfilePageUser1.routename:(context) => ProfilePageUser1(),
-        chatpage.routename:(context) => chatpage(email: '',),
+        //decryptionPage.routename:(context) => decryptionPage,
         chatpageuser.routename:(context) => chatpageuser(email: '',),
         ADDUser.routename:(context) => ADDUser(),
+        decryptionPage.routeName: (context) => decryptionPage(),
 
 
 
 
       },
-      initialRoute: LoGinPage.routename,
+      initialRoute:LoGinPage.routename,
       theme: MyThemeData.Lighttheme,
 
     );
