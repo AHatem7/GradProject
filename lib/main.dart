@@ -29,6 +29,7 @@ import 'encrpt/test2.dart';
 import 'encrpt/test3.dart';
 import 'getdatatest.dart';
 //import 'home/chatpage.dart';
+import 'home/chatTest.dart';
 import 'login/LoGinPage.dart';
 import 'login/loginScreen.dart';
 
@@ -76,7 +77,7 @@ class MyApp extends StatelessWidget {
         AddUser.routeName:(context) => ADDUser(),
         UserHomePage.routename: (context) => UserHomePage(),
         EncryptFile.routename:(context) => EncryptFile(),
-        //DecryptionPage.routename:(context) => DecryptionPage(),
+        Chat.routename:(context) => Chat(),
         //viewfile.routename:(context) => viewfile(),
         ViewPDF.routename:(context) => ViewPDF(),
         ProfilePageUser1.routename:(context) => ProfilePageUser1(),

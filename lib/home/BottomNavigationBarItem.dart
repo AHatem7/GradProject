@@ -47,8 +47,8 @@ int currentindex =0;
                 //     label: 'request'),
                 BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/request.png')),
                     label: 'Chat'),
-                BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/pr.png')),
-                    label: 'Profile'),
+                // BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/pr.png')),
+                //     label: 'Profile'),
               ]),
         ),
         body:
@@ -63,5 +63,5 @@ int currentindex =0;
     const Departments(),
     UsersPage(),
     decryptionPage(),
-     ProfilePage()];
+     ];
 }

@@ -1,6 +1,7 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled2/home/HomePage.dart';
+import 'package:untitled2/home/ProfilePage.dart';
 import 'package:untitled2/uplode_file.dart';
 import 'package:untitled2/view_file.dart';
 import 'CardDesign.dart';
@@ -11,6 +12,7 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 import 'encrpt/decryptPage.dart';
 import 'encrpt/test.dart';
+import 'home/chatTest.dart';
 
 
 
@@ -46,6 +48,51 @@ class _DepartmentsState extends State<Departments> {
 
 
         Scaffold(
+
+            drawer: Drawer(
+
+
+
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  DrawerHeader(
+                    child:Icon(Icons.security_outlined,size: 50) ,
+                    decoration: BoxDecoration(
+                      color:  Color.fromRGBO(220,205, 168,1),
+                    ),
+                  ),
+                  Column(
+                    children: <Widget>[
+                      ListTile(
+                        leading: Icon(Icons.person,color: Colors.black,size: 25,),
+                        title: Text('Profile'),
+                        onTap: () {
+                          // Do something
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfilePage()));
+
+                        },
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.chat,color: Colors.black,size: 25,),
+                        title: Text('Chat'),
+                        onTap: () {
+                          // Do something
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Chat() ));
+
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            appBar: AppBar(
+                iconTheme: IconThemeData(color: Colors.black,size: 30),leadingWidth: 100,
+                elevation: 0,
+                backgroundColor: Colors.transparent,
+                actions: [
+                ]),
             backgroundColor: Colors.transparent,
 
 
@@ -110,7 +157,7 @@ class _DepartmentsState extends State<Departments> {
                 //   ),
                 // ),
 
-    Expanded(flex: 7,
+    Expanded(flex: 12,
       child: FutureBuilder(
           future: storage.listFiles(),
 
