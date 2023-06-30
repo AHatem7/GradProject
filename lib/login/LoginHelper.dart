@@ -9,6 +9,7 @@ import 'package:untitled2/choose/choose.dart';
 
 import 'package:untitled2/home/UsersPage.dart';
 
+import '../USER/userNavBar.dart';
 import '../home/BottomNavigationBarItem.dart';
 import 'LoGinPage.dart';
 
@@ -67,7 +68,7 @@ class AuthService{
           // Navigate to the admin dashboard
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => UserHomePage()),
+            MaterialPageRoute(builder: (context) => UserNavBar()),
                 (route) => false,
           );
 

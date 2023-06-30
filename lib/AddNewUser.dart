@@ -20,16 +20,14 @@ class ADDUser extends StatelessWidget {
               // Expanded( flex: 2,
               //     child: Row(children: const [])),
               Expanded(flex: 2,
-                child: Row(
-                  children: [Padding(padding: EdgeInsets.symmetric(horizontal: 20)),
-                    FloatingActionButton(onPressed: (){
-                      Navigator.pop(context, MaterialPageRoute(builder: (context)=> UsersPage()));
+                child: Row(children: [SizedBox(width: 20,),
+                  FloatingActionButton(onPressed: (){
+                    Navigator.pop(context,
+                        MaterialPageRoute(builder: (context)=> UsersPage()));
 
-                    },
-                      child: Icon(Icons.arrow_back, color: Colors.black,size: 35),
-                      backgroundColor: Colors.white,)
-                  ],
-                ),
+                  }, child: Icon(Icons.arrow_back,color: Colors.black),
+                      backgroundColor: Colors.white),
+                ],),
               ),
 
               const SizedBox(height: 15 ,),

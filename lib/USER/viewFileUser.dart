@@ -29,21 +29,22 @@ class _viewfileUserState extends State<viewfileUser> {
           fit: BoxFit.fill,
         ),
         Scaffold(
+          appBar: AppBar(backgroundColor:Colors.transparent,elevation: 0,iconTheme: IconThemeData(color: Colors.black)),
           backgroundColor: Colors.transparent,
           body: SingleChildScrollView(
             child: Column(
               children: [
-                Padding(padding: EdgeInsets.symmetric(vertical: 25)),
+                Padding(padding: EdgeInsets.symmetric(vertical: 15)),
                 Row(
                   children: [
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 20)),
-                    FloatingActionButton(onPressed: (){
-                      //  Navigator to the previous page
-                      Navigator.pop(context, MaterialPageRoute(builder: (context)=> UserHomePage()));
-                    },
-                      child:Icon(Icons.arrow_back, color: Colors.black,size: 35),
-                      backgroundColor: Colors.white,
-                    )
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 15)),
+                    // FloatingActionButton(onPressed: (){
+                    //   //  Navigator to the previous page
+                    //   Navigator.pop(context, MaterialPageRoute(builder: (context)=> UserHomePage()));
+                    // },
+                    //   child:Icon(Icons.arrow_back, color: Colors.black,size: 25),
+                    //   backgroundColor: Colors.white,
+                    // )
                   ],
                 ),
 
@@ -59,7 +60,7 @@ class _viewfileUserState extends State<viewfileUser> {
                     width: 341,
                     height: 341,
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),),
-                    child: Column(
+                    child: Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         FutureBuilder(
                             future: storage.downloadURl(widget.viewfilenameuser),
@@ -68,14 +69,21 @@ class _viewfileUserState extends State<viewfileUser> {
                               if (snapshot.connectionState == ConnectionState.done &&
                                   snapshot.hasData) {
                                 return Center(
-                                  child: Container(
-                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),),
-                                    width: 300,
-                                    height: 300,
-                                    child: Image.network(snapshot.data!,
-                                      fit: BoxFit.cover,
+                                  child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),),
+                                          width:200,
+                                          height: 200,
+                                          child: Column(
+                                            children: [
+                                              Image(image: AssetImage('assets/images/corrupt-file.png'),),
 
-                                    ),
+
+                                            ],
+                                          )
+                                      ),
+                                      Text('Invalid Data',style: TextStyle(fontSize: 20))],
                                   ),
                                 );
                               }

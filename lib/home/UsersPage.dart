@@ -10,7 +10,11 @@ import 'package:untitled2/AddNewUser.dart';
 import 'package:untitled2/Add_user.dart';
 import 'package:untitled2/textfeild.dart';
 
+import '../USER/FinallChatPage.dart';
 import '../backgrounds.dart';
+import 'ProfilePage.dart';
+import 'chatHelper.dart';
+import 'chatScreen.dart';
 
 class UsersPage extends StatelessWidget {
   const UsersPage({Key? key}) : super(key: key);
@@ -27,6 +31,58 @@ class UsersPage extends StatelessWidget {
 
 
         Scaffold(backgroundColor: Colors.transparent, resizeToAvoidBottomInset: false,
+          drawer: Drawer(
+
+
+
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                DrawerHeader(
+                  decoration: BoxDecoration(color: Colors.red,
+                      image: DecorationImage(image: AssetImage('assets/images/img.png'),
+                          fit: BoxFit.cover)
+
+                  ),
+
+                  child:Text(''),
+                  // Icon(Icons.security_outlined,size: 50) ,
+                  // decoration: BoxDecoration(
+                  //   color:  Color.fromRGBO(220,205, 168,1),
+                  // ),
+                ),
+                Column(
+                  children: <Widget>[
+                    ListTile(
+                      leading: ImageIcon(AssetImage('assets/images/pr.png')),
+                      title: Text('Profile'),
+                      onTap: () {
+                        // Do something
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfilePage()));
+
+                      },
+                    ),
+                    ListTile(
+                      leading: ImageIcon(AssetImage('assets/images/request.png')),
+                      title: Text('Chat'),
+                      onTap: () {
+                        // Do something
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>UsersListPage() ));
+
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          appBar: AppBar(
+              iconTheme: IconThemeData(color: Colors.black,size: 30),leadingWidth: 100,
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              actions: [
+              ]),
+
           body:Column(
             children: [
               Expanded(
@@ -50,7 +106,7 @@ class UsersPage extends StatelessWidget {
 
                     if(snapshot.hasData){
 
-                      return Expanded(flex: 4,
+                      return Expanded(flex: 5,
                         child: ListView.builder(
                             itemCount: snapshot.data!.docs.length,
                             shrinkWrap: true,
@@ -67,6 +123,10 @@ class UsersPage extends StatelessWidget {
                                             crossAxisAlignment: CrossAxisAlignment.center,
                                             children: [
                                               Slidable(
+
+
+
+
                                                 startActionPane: ActionPane(motion: DrawerMotion(),
                                                     children: [
                                                       SlidableAction(onPressed: (buildContext)async{
@@ -168,50 +228,75 @@ class UsersPage extends StatelessWidget {
                                                       )
                                                     ]),
 
-                                                child: Card(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                                                  child: Container(
-                                                    height: 180,
-                                                    width: 325,
+                                                child: GestureDetector( onTap: ()
+                                                {
+                                                //   Navigator.push(
+                                                //   context,
+                                                //   MaterialPageRoute(
+                                                //     builder: (context) => ChatPage(
+                                                //       selectedUser: data,
+                                                //     ),
+                                                //   ),
+                                                // );
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) => ChatPageFinal(
+                                                        selectedUser: data,
+                                                      ),
+                                                    ),
+                                                  );
 
-                                                    child: Column(crossAxisAlignment: CrossAxisAlignment.start
-                                                      ,mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                      children: [
-                                                        Row(
-                                                          children: [
-                                                            SizedBox(width: 18,),
-                                                            Text('Name:',style:TextStyle(color: Color.fromRGBO(206,185, 151, 1),fontSize: 15,fontWeight: FontWeight.bold) ),
-                                                            SizedBox(width: 18,),
-                                                            Text(data['firstname'],style:  TextStyle(fontSize: 14)),
-                                                            SizedBox(width: 18,),
-                                                            Text(data['lastname'],style: TextStyle(fontSize: 14)),
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          children: [
-                                                            SizedBox(width: 18,),
-                                                            Text('Email:',style: TextStyle(color: Color.fromRGBO(206,185, 151, 1),fontSize: 15,fontWeight: FontWeight.bold)),
-                                                            SizedBox(width: 18,),
-                                                            Text(data['email'],style:TextStyle(fontSize: 13)),
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          children: [
-                                                            SizedBox(width: 18,),
-                                                            Text('Phone:',style: TextStyle(color: Color.fromRGBO(206,185, 151, 1),fontSize: 15,fontWeight: FontWeight.bold)),
-                                                            SizedBox(width: 18,),
-                                                            Text(data['phone'],style: TextStyle(fontSize: 14)),
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          children: [
-                                                            SizedBox(width: 18,),
-                                                            Text('Department:',style: TextStyle(color: Color.fromRGBO(206,185, 151, 1),fontSize: 15,fontWeight: FontWeight.bold)),
-                                                            SizedBox(width: 18,),
-                                                            Text(data['department'],style: TextStyle(fontSize: 14)),
-                                                          ],
-                                                        ),
+                                                },
 
-                                                      ],
+                                                  child: Card(
+
+
+                                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                                                    child: Container(
+                                                      height: 180,
+                                                      width: 325,
+
+                                                      child: Column(crossAxisAlignment: CrossAxisAlignment.start
+                                                        ,mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                        children: [
+                                                          Row(
+                                                            children: [
+                                                              SizedBox(width: 18,),
+                                                              Text('Name:',style:TextStyle(color: Color.fromRGBO(206,185, 151, 1),fontSize: 15,fontWeight: FontWeight.bold) ),
+                                                              SizedBox(width: 18,),
+                                                              Text(data['firstname'],style:  TextStyle(fontSize: 14)),
+                                                              SizedBox(width: 18,),
+                                                              Text(data['lastname'],style: TextStyle(fontSize: 14)),
+                                                            ],
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              SizedBox(width: 18,),
+                                                              Text('Email:',style: TextStyle(color: Color.fromRGBO(206,185, 151, 1),fontSize: 15,fontWeight: FontWeight.bold)),
+                                                              SizedBox(width: 18,),
+                                                              Text(data['email'],style:TextStyle(fontSize: 13)),
+                                                            ],
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              SizedBox(width: 18,),
+                                                              Text('Phone:',style: TextStyle(color: Color.fromRGBO(206,185, 151, 1),fontSize: 15,fontWeight: FontWeight.bold)),
+                                                              SizedBox(width: 18,),
+                                                              Text(data['phone'],style: TextStyle(fontSize: 14)),
+                                                            ],
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              SizedBox(width: 18,),
+                                                              Text('Department:',style: TextStyle(color: Color.fromRGBO(206,185, 151, 1),fontSize: 15,fontWeight: FontWeight.bold)),
+                                                              SizedBox(width: 18,),
+                                                              Text(data['department'],style: TextStyle(fontSize: 14)),
+                                                            ],
+                                                          ),
+
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),

@@ -6,9 +6,10 @@ import 'package:untitled2/editviewuser.dart';
 import 'package:untitled2/home/BottomNavigationBarItem.dart';
 //import 'package:untitled2/backgrounds.dart';
 import 'package:untitled2/home/ProfilePage.dart';
-import 'package:untitled2/home/chatpage.dart';
+import 'package:untitled2/home/FinalDecryption.dart';
 import 'package:untitled2/profilepage_edit.dart';
 import 'package:untitled2/myTheme.dart';
+import 'package:untitled2/testOFChat.dart';
 //import 'package:untitled2/registration.dart';
 import 'package:untitled2/testUploadFileDB.dart';
 import 'package:untitled2/uplode_file.dart';
@@ -28,7 +29,8 @@ import 'encrpt/test.dart';
 import 'encrpt/test2.dart';
 import 'encrpt/test3.dart';
 import 'getdatatest.dart';
-//import 'home/chatpage.dart';
+//import 'home/FinalDecryption.dart';
+import 'home/chatHelper.dart';
 import 'home/chatTest.dart';
 import 'login/LoGinPage.dart';
 import 'login/loginScreen.dart';
@@ -60,10 +62,10 @@ class MyApp extends StatelessWidget {
         AddUser.routeName:(context) => const AddUser(),
         Departments.routename:(context) => const Departments(),
         UploadFile.routename:(context) => UploadFile(),
-        //decryptionPage.routename:(context) => decryptionPage(),
-        //AddTaskBottomSheet.routename:(context) => AddTaskBottomSheet(),
+        UsersListPage.routename:(context) => UsersListPage(),
+        //ChatScreen55.routename:(context) => ChatScreen55(),
         //EncryptedFilesPage.routeName:(context) => EncryptedFilesPage(),
-        //EncryptedFileList.routename:(context) => EncryptedFileList(),
+       // UsersListPage22.routename:(context) => UsersListPage22(),
         //SignUpScreen.routename:(context) => SignUpScreen(),
         //LoginPage1.routename:(context) => LoginPage1(),
         EncryptionPage.routeName:(context) => EncryptionPage(),
@@ -82,7 +84,7 @@ class MyApp extends StatelessWidget {
         ViewPDF.routename:(context) => ViewPDF(),
         ProfilePageUser1.routename:(context) => ProfilePageUser1(),
         //decryptionPage.routename:(context) => decryptionPage,
-        chatpageuser.routename:(context) => chatpageuser(email: '',),
+        //chatpageuser.routename:(context) => chatpageuser(email: '',),
         ADDUser.routename:(context) => ADDUser(),
         decryptionPage.routeName: (context) => decryptionPage(),
 

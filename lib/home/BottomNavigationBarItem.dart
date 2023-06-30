@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled2/Departments.dart';
 import 'package:untitled2/home/HomePage.dart';
 import 'package:untitled2/home/ProfilePage.dart';
-import 'package:untitled2/home/chatpage.dart';
+import 'package:untitled2/home/FinalDecryption.dart';
 import 'package:untitled2/home/UsersPage.dart';
 import 'package:untitled2/backgrounds.dart';
 
@@ -27,7 +27,9 @@ int currentindex =0;
 
 
 
-      Scaffold(resizeToAvoidBottomInset: false,
+      Scaffold(
+
+          resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
         bottomNavigationBar: Theme(data: Theme.of(context).copyWith(
             canvasColor: Colors.white,shadowColor: Colors.transparent
@@ -38,15 +40,15 @@ int currentindex =0;
                 setState(() {});
               },
               items: const [
-                BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/home.png')),
+                BottomNavigationBarItem(icon: Icon(Icons.home_outlined),
                     label: 'Homepage',),
 
                 BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/user.png')),
                     label: 'Users'),
                 // BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/r.png')),
                 //     label: 'request'),
-                BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/request.png')),
-                    label: 'Chat'),
+                BottomNavigationBarItem(icon: Icon(Icons.lock_open_outlined),
+                    label: 'Decrypt'),
                 // BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/pr.png')),
                 //     label: 'Profile'),
               ]),

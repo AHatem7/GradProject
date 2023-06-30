@@ -12,6 +12,7 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 import 'encrpt/decryptPage.dart';
 import 'encrpt/test.dart';
+import 'home/chatHelper.dart';
 import 'home/chatTest.dart';
 
 
@@ -57,15 +58,22 @@ class _DepartmentsState extends State<Departments> {
                 padding: EdgeInsets.zero,
                 children: <Widget>[
                   DrawerHeader(
-                    child:Icon(Icons.security_outlined,size: 50) ,
-                    decoration: BoxDecoration(
-                      color:  Color.fromRGBO(220,205, 168,1),
+                    decoration: BoxDecoration(color: Colors.red,
+                        image: DecorationImage(image: AssetImage('assets/images/img.png'),
+                            fit: BoxFit.cover)
+
                     ),
+
+                    child:Text(''),
+                    // Icon(Icons.security_outlined,size: 50) ,
+                    // decoration: BoxDecoration(
+                    //   color:  Color.fromRGBO(220,205, 168,1),
+                    // ),
                   ),
                   Column(
                     children: <Widget>[
                       ListTile(
-                        leading: Icon(Icons.person,color: Colors.black,size: 25,),
+                        leading: ImageIcon(AssetImage('assets/images/pr.png')),
                         title: Text('Profile'),
                         onTap: () {
                           // Do something
@@ -74,11 +82,11 @@ class _DepartmentsState extends State<Departments> {
                         },
                       ),
                       ListTile(
-                        leading: Icon(Icons.chat,color: Colors.black,size: 25,),
+                        leading: ImageIcon(AssetImage('assets/images/request.png')),
                         title: Text('Chat'),
                         onTap: () {
                           // Do something
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Chat() ));
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>UsersListPage() ));
 
                         },
                       ),
@@ -192,36 +200,34 @@ class _DepartmentsState extends State<Departments> {
 
                           },
                         child:
-                        Text(snapshot.data!.items[index].name,
-                            style: TextStyle(color: Colors.black,fontSize: 10)),
-                         style: ElevatedButton.styleFrom(primary: Colors.white),
+                        Stack(alignment: Alignment.center,
+                          children: [
 
-                         // FutureBuilder(
-                         //
-                         //     future: storage.downloadURl(snapshot.data!.items[index].name),
-                         //     builder: (BuildContext context,
-                         //         AsyncSnapshot<String> snapshot) {
-                         //       if(snapshot.connectionState == ConnectionState.done &&
-                         //           snapshot.hasData){
-                         //         return Container(
-                         //           width: 50,
-                         //           height: 50,
-                         //           child: Image.network(
-                         //               snapshot.data!,
-                         //               fit: BoxFit.cover),
-                         //         );
-                         //
-                         //       }
-                         //       if(snapshot.connectionState == ConnectionState.waiting || !snapshot.hasData){
-                         //         return CircularProgressIndicator();
-                         //       }
-                         //       return Container();
-                         //     }),
-                         // Image.network(snapshot.data.toString(),fit:  BoxFit.cover,),
-                         //icon: Icon(Icons.image),
-                         //label: Text(''),
+                            Opacity(opacity: 0.03,child: Image.asset('assets/images/open-file.png'),),
+                            Text(snapshot.data!.items[index].name,
+                              style: TextStyle(color: Colors.black,fontSize: 10)),
+
+
+
+
+                          ], ),
+                         style: ElevatedButton.styleFrom(primary: Colors.white,
+
+
+                         elevation: 6,shape: RoundedRectangleBorder(
+                                 borderRadius: BorderRadius.only(
+                                     bottomLeft: Radius.circular(20),topRight: Radius.circular(20))),
+
+                         ),
+
+
                     ),
+
+
+
                      );
+
+
                     }),
               );
             }
@@ -271,6 +277,12 @@ class _DepartmentsState extends State<Departments> {
               child: const Icon(Icons.add,color: Colors.white, size: 45,),
               backgroundColor: const Color.fromRGBO(220, 205, 168, 1),
             ),
+            // FloatingActionButton(onPressed: (){
+            //   Navigator.push(context, MaterialPageRoute(builder: (context)=> UsersListPage()));
+            // },
+            //   child: const Icon(Icons.abc,color: Colors.white, size: 45,),
+            //   backgroundColor: const Color.fromRGBO(220, 205, 168, 1),
+            // ),
           ],
         ),
       ],

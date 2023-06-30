@@ -25,17 +25,18 @@ final currentUser = FirebaseAuth.instance;
 
         Scaffold(
           backgroundColor: Colors.transparent,
+          appBar: AppBar(backgroundColor: Colors.transparent,elevation: 0,),
           body: Column(
 
           children: [
 
 Expanded(
       child: Row(children: [SizedBox(width: 20,),
-        FloatingActionButton(onPressed: (){
-          Navigator.pop(context, MaterialPageRoute(builder: (context)=> Departments()));
-
-        }, child: Icon(Icons.arrow_back,color: Colors.black),
-            backgroundColor: Colors.white),
+        // FloatingActionButton(onPressed: (){
+        //   Navigator.pop(context, MaterialPageRoute(builder: (context)=> Departments()));
+        //
+        // }, child: Icon(Icons.arrow_back,color: Colors.black),
+        //     backgroundColor: Colors.white),
       ],)),
 
             Expanded(
@@ -86,7 +87,9 @@ Expanded(
                                             Row(
                                               children: [
                                                 SizedBox(width: 25,), Icon(Icons.person_rounded),SizedBox(width: 15,),
-                                                Text('Name:',style: TextStyle(color: Color.fromRGBO(206,185, 151, 1),fontSize: 20,fontWeight: FontWeight.bold)),
+                                                Text('Name:',
+                                                    style: TextStyle(color: Color.fromRGBO(206,185, 151, 1),
+                                                        fontSize: 20,fontWeight: FontWeight.bold)),
                                                 SizedBox(width: 18,),
                                                 Text(data['firstname'],style:TextStyle(fontSize: 18)),SizedBox(width: 18,),
                                                 Text(data['lastname'],style: TextStyle(fontSize: 18)),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:untitled2/USER/profileuser.dart';
 import 'package:untitled2/USER/viewFileUser.dart';
+import 'package:untitled2/backgrounds.dart';
 import '../storage_service.dart';
 import 'chatpageUser.dart';
 
@@ -15,61 +16,62 @@ class UserHomePage extends StatelessWidget {
     return Stack(
       alignment: AlignmentDirectional.bottomEnd,
       children: [
-        Image.asset('assets/images/BG1.png',
-            width: double.infinity,
-            height: double.infinity,
-            fit: BoxFit.cover),
-
+        // Image.asset('assets/images/BG1.png',
+        //     width: double.infinity,
+        //     height: double.infinity,
+        //     fit: BoxFit.cover),
+Background('assets/images/BG1.png'),
 
 
 
         Scaffold(
+          appBar: AppBar(backgroundColor: Colors.transparent,elevation: 0),
 
 
-            drawer: Drawer(
-
-
-
-              child: ListView(
-                padding: EdgeInsets.zero,
-                children: <Widget>[
-                  DrawerHeader(
-                    child:Icon(Icons.security_outlined,size: 50) ,
-                    decoration: BoxDecoration(
-                      color:  Color.fromRGBO(220,205, 168,1),
-                    ),
-                  ),
-                  Column(
-                    children: <Widget>[
-                      ListTile(
-                        leading: Icon(Icons.person,color: Colors.black,size: 25,),
-                        title: Text('Profile'),
-                        onTap: () {
-                          // Do something
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfilePageUser1()));
-
-                        },
-                      ),
-                      ListTile(
-                        leading: Icon(Icons.chat,color: Colors.black,size: 25,),
-                        title: Text('Chat'),
-                        onTap: () {
-                          // Do something
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> chatpageuser(email: '',)));
-
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.black,size: 30),leadingWidth: 100,
-              elevation: 0,
-              backgroundColor: Colors.transparent,
-              actions: [
-               ]),
+          //   drawer: Drawer(
+          //
+          //
+          //
+          //     child: ListView(
+          //       padding: EdgeInsets.zero,
+          //       children: <Widget>[
+          //         DrawerHeader(
+          //           child:Icon(Icons.security_outlined,size: 50) ,
+          //           decoration: BoxDecoration(
+          //             color:  Color.fromRGBO(220,205, 168,1),
+          //           ),
+          //         ),
+          //         Column(
+          //           children: <Widget>[
+          //             ListTile(
+          //               leading: Icon(Icons.person,color: Colors.black,size: 25,),
+          //               title: Text('Profile'),
+          //               onTap: () {
+          //                 // Do something
+          //                 Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfilePageUser1()));
+          //
+          //               },
+          //             ),
+          //             ListTile(
+          //               leading: Icon(Icons.chat,color: Colors.black,size: 25,),
+          //               title: Text('Chat'),
+          //               onTap: () {
+          //                 // Do something
+          //                 Navigator.push(context, MaterialPageRoute(builder: (context)=> chatpageuser(email: '',)));
+          //
+          //               },
+          //             ),
+          //           ],
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // appBar: AppBar(
+          // iconTheme: IconThemeData(color: Colors.black,size: 30),leadingWidth: 100,
+          //     elevation: 0,
+          //     backgroundColor: Colors.transparent,
+          //     actions: [
+          //      ]),
             backgroundColor: Colors.transparent,
             
             body:
@@ -151,7 +153,21 @@ class UserHomePage extends StatelessWidget {
 
 
                                       },
-                                      child: Text(snapshot.data!.items[index].name,style: TextStyle(color: Colors.black)),style: ElevatedButton.styleFrom(primary: Colors.white),
+                                      child: Stack(alignment: Alignment.center,
+                                        children: [
+
+                                          Opacity(opacity: 0.03,child: Image.asset('assets/images/open-file.png'),),
+                                          Text(snapshot.data!.items[index].name,
+                                              style: TextStyle(color: Colors.black,fontSize: 10)),
+
+
+
+
+                                        ], ),
+                                      style: ElevatedButton.styleFrom(primary: Colors.white,
+                                      elevation: 6,shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(20),topRight: Radius.circular(20)))),
                                     ),
                                   );
                                 }),

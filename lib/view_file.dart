@@ -18,6 +18,17 @@ class viewfile extends StatefulWidget {
 }
 
 class _viewfileState extends State<viewfile>  {
+  final Storage storage = Storage();
+
+  Future<void> _deleteFile() async {
+    // Delete the file
+    await storage.deleteFile(widget.viewfilename);
+    // Navigate back to the previous screen
+    Navigator.pop(context);
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     final Storage storage = Storage();
@@ -27,6 +38,7 @@ class _viewfileState extends State<viewfile>  {
 
 
         Scaffold(
+
           //backgroundColor: Colors.transparent,
           body: FutureBuilder(
               future: storage.downloadURl(widget.viewfilename),
@@ -68,43 +80,62 @@ class _viewfileState extends State<viewfile>  {
 
 
 
-                          Column(mainAxisAlignment: MainAxisAlignment.center,
+
+                          Expanded(child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
+                              Row(),
                               Center(
                                 child: Stack(
-                                 children: [Card(
+                                  children: [Card(
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(20)),
 
 
                                     child: Container(
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),),
-                    width: 341,
-                    height: 351,
+                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),),
+                                      width: 341,
+                                      height: 351,
                                       child: Center(
-                                        child: Container(
-                                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),),
-                                          width:300,
-                                          height: 300,
-                                          child: Image.network(snapshot.data!,
-                                          fit: BoxFit.cover,
+                                        child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),),
+                                              width:200,
+                                              height: 200,
+                                              child: Column(
+                                                children: [
+                                                  Image(image: AssetImage('assets/images/corrupt-file.png'),),
 
 
-                    ),
+                                                ],
+                                              )
+                                            ),
+                                            Text('Invalid Data',style: TextStyle(fontSize: 20))],
                                         ),
                                       ),
                                     ),
                                   ),
 
-                                 ],   ),
+                                  ],   ),
                               ),
 
 
 
 
 
+                              ElevatedButton(onPressed: (){
+                                _deleteFile();
+                              }, child: Text('Delete',style: TextStyle(fontSize: 20)),
+                                  style: ElevatedButton.styleFrom(
+                                      fixedSize: Size(150, 45),
+                                      backgroundColor: Color.fromRGBO(
+                                          196, 25, 14, 1.0),
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))) ,
                             ],
-                          ),],
+                          ),)
+
+
+                        ],
                       );
 
 

@@ -20,7 +20,7 @@ class Storage{
     File file = File(filePath);
 
     try{
-      await storage.ref('test/$fileName').putFile(file);
+      await storage.ref('Encrypted/$fileName').putFile(file);
     } on firebase_core.FirebaseException catch(e){
       print(e);
     }
@@ -28,7 +28,7 @@ class Storage{
 
 
   Future<firebase_storage.ListResult> listFiles() async{
-    firebase_storage.ListResult results = await storage.ref('test').listAll();
+    firebase_storage.ListResult results = await storage.ref('Encrypted').listAll();
 
     results.items.forEach((firebase_storage.Reference ref) {
       print('Found file: $ref');
@@ -38,9 +38,16 @@ class Storage{
   }
 
   Future<String> downloadURl(String fileName) async {
-    String downloadURL = await storage.ref('test/$fileName').getDownloadURL();
+    String downloadURL = await storage.ref('Encrypted/$fileName').getDownloadURL();
 
     return downloadURL;
+  }
+
+  Future<void> deleteFile(String fileName) async {
+    // Get a reference to the file
+    final ref = storage.ref('Encrypted/$fileName');
+    // Delete the file
+    await ref.delete();
   }
 
   // Future<String> _getDownloadUrl(String fileName) async {
